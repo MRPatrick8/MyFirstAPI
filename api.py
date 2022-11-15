@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Request
 from datetime import datetime
-from easynmt import EasyNMT
+# from easynmt import EasyNMT
 from fastapi.responses import HTMLResponse
 
-model = EasyNMT('opus-mt')
+# model = EasyNMT('opus-mt')
 
 storage = FastAPI(title = 'my FASTAPI')
 #flash way
@@ -25,24 +25,26 @@ def names(First_name: bool = False, last_name: bool = False, full_name: bool = T
     if last_name:
         full_names += 'Patrick'
     if full_name:
-        full_names = 'Hello my name is Gloria Sinseswa'
+        full_names = 'Hello my name is Rene Patrick'
     return full_names
 
-@storage.get('/translation')
-def translate(text : str = ''):
-  response = model.translate([text], target_lang='fr')
-  return response[0]
+# @storage.get('/translation')
+# def translate(text : str = ''):
+#   response = model.translate([text], target_lang='fr')
+#   return response[0]
 
-@storage.get('/translation-form', response_class=HTMLResponse)
-def form():
-  content =  f"""<html>
-  <form action='/translation' method='GET'>
-   <input type='text' name='text' placeholder='Please Input your Sentence'>
-   <input type='submit' value='submit'>
-  </form>
-  </html>
-  """
-  return content
+if __name__ == "__main__":
+    storage.run()
+# @storage.get('/translation-form', response_class=HTMLResponse)
+# def form():
+#   content =  f"""<html>
+#   <form action='/translation' method='GET'>
+#    <input type='text' name='text' placeholder='Please Input your Sentence'>
+#    <input type='submit' value='submit'>
+#   </form>
+#   </html>
+#   """
+#   return content
 
 
 

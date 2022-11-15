@@ -9,7 +9,7 @@ storage = FastAPI(title = 'my FASTAPI')
 #flash way
 @storage.get('/')#ROUTE
 def index():
-    return "My name is Gloria, This is my API"
+    return "My name is Rene, This is my API"
 
 
 @storage.get('/today')
